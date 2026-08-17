@@ -1,0 +1,791 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diamond Balls Index</title>
+<meta name="description" content="Twenty questions on where you read the crypto cycle and how you are actually positioned">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Do you have diamond balls?">
+<meta property="og:description" content="Twenty questions, ninety seconds, one score out of a hundred">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@oldhawk">
+<meta name="twitter:title" content="Do you have diamond balls?">
+<meta name="twitter:description" content="Twenty questions, ninety seconds, one score out of a hundred">
+<meta name="twitter:image" content="/og.png">
+<link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --stock:#E7EAE6;--stock2:#D2D8D1;--ink:#101316;--soft:#5A635F;--rule:#A9B2AC;
+  --seal:#1E3D2E;--gilt:#9C7B33;
+  --b1:#26467A;--b2:#3C6B6B;--b3:#8A8B62;--b4:#B96E33;--b5:#8E241E;
+}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--stock2);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding:16px 10px 56px;position:relative}
+
+/* ===== SCROLLING BACKGROUND ===== */
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.mq{position:absolute;left:0;display:flex;white-space:nowrap;font-family:"Archivo Black",Impact,sans-serif;
+  text-transform:uppercase;letter-spacing:-.02em;color:transparent;
+  -webkit-text-stroke:1px rgba(16,19,22,.20);will-change:transform}
+.mq.solid{-webkit-text-stroke:0;color:rgba(16,19,22,.07)}
+.mq i{font-style:normal;padding-right:52px}
+@keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.offline{max-width:780px;margin:0 auto 10px;background:#8E241E;color:#E7EAE6;position:relative;z-index:2;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5;letter-spacing:.06em;
+  padding:12px 16px;border:1px solid #101316}
+.offline a{color:#E7EAE6}
+.paper{max-width:780px;margin:0 auto;background:var(--stock);border:1px solid var(--ink);
+  box-shadow:0 18px 60px rgba(16,19,22,.24);position:relative;overflow:hidden;z-index:1}
+.paper:before{content:"";position:absolute;inset:6px;border:1px solid var(--rule);pointer-events:none;z-index:6}
+.pad{padding:0 30px 34px}
+@media(max-width:560px){.pad{padding:0 15px 26px}}
+.mono{font-family:"IBM Plex Mono",monospace}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--soft)}
+.rule{height:1px;background:var(--rule);margin:26px 0}
+.rule.dbl{height:4px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:none}
+.center{text-align:center}.hidden{display:none!important}
+h3{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;font-size:17px;letter-spacing:-.01em;margin:0;text-transform:uppercase}
+.sechead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.sub{font-size:13.5px;color:var(--soft)}
+
+/* ===== HERO ===== */
+.hero{position:relative;padding:44px 30px 40px;overflow:hidden;text-align:center;border-bottom:1px solid var(--ink)}
+@media(max-width:560px){.hero{padding:32px 16px 30px}}
+.floaters{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.floaters b{position:absolute;font-family:"Archivo Black",Impact,sans-serif;font-weight:400;color:var(--ink);
+  opacity:.055;white-space:nowrap;animation:drift linear infinite alternate}
+@keyframes drift{from{transform:translateY(20px)}to{transform:translateY(-20px)}}
+.hero h1{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;letter-spacing:-.04em;line-height:.9;
+  font-size:clamp(40px,11.5vw,80px);margin:12px 0 0;position:relative;text-transform:uppercase}
+.hero h1 .hl{color:var(--b5)}
+.rot{position:relative;height:2.5em;margin-top:16px;overflow:hidden}
+.rot b{position:absolute;left:0;right:0;top:0;font-family:"IBM Plex Sans",sans-serif;font-weight:600;
+  font-size:clamp(15px,3.7vw,19px);opacity:0;animation:rotcyc 10.5s infinite}
+.rot b:nth-child(2){animation-delay:3.5s}.rot b:nth-child(3){animation-delay:7s}
+@keyframes rotcyc{0%{opacity:0;transform:translateY(14px)}5%,28%{opacity:1;transform:translateY(0)}
+  34%,100%{opacity:0;transform:translateY(-14px)}}
+.hero .cta{margin-top:10px;position:relative}
+.hint{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--soft);margin-top:14px;position:relative}
+.livebar{position:relative;margin-top:22px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  overflow:hidden;padding:9px 0}
+.livebar .track{display:flex;white-space:nowrap;animation:mqL 26s linear infinite;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+.livebar .track i{font-style:normal;padding-right:40px}
+
+/* ===== GAUGE ===== */
+.dialbox{position:relative;margin:26px auto 0;max-width:470px}
+.dialbox canvas{display:block;width:100%;height:auto}
+#blast{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:3}
+.shake{animation:shk .45s cubic-bezier(.36,.07,.19,.97)}
+@keyframes shk{10%{transform:translate(-8px,4px)}25%{transform:translate(7px,-5px)}
+ 40%{transform:translate(-5px,3px)}60%{transform:translate(4px,-2px)}80%{transform:translate(-2px,1px)}}
+.ends{display:flex;justify-content:space-between;padding:0 6px;margin-top:-6px;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.readout{text-align:center;margin-top:-4px;position:relative}
+.readout .num{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;letter-spacing:-.045em;
+  font-size:clamp(64px,17vw,104px);line-height:.82;font-variant-numeric:tabular-nums}
+.chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:11.5px;
+  letter-spacing:.24em;padding:8px 15px;color:var(--stock);background:var(--ink);margin-top:14px}
+.skip{position:absolute;right:0;top:0;z-index:5}
+.veil{opacity:0;transition:opacity .45s ease}.veil.on{opacity:1}
+
+/* ===== STATS / CHARTS ===== */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--ink);margin-top:26px}
+.stats div{padding:13px 5px;text-align:center;border-right:1px solid var(--rule)}
+.stats div:last-child{border-right:0}
+.stats .k{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.stats .v{font-family:"Archivo Black",Impact,sans-serif;font-size:22px;margin-top:5px;letter-spacing:-.03em}
+@media(max-width:560px){.stats{grid-template-columns:repeat(3,1fr)}
+ .stats div{border-bottom:1px solid var(--rule)}.stats div:nth-child(3n){border-right:0}}
+.chart{width:100%;display:block}
+.chart .grid{stroke:var(--rule);stroke-width:.7}
+.chart .axis{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:var(--soft)}
+.chart .lr{stroke:var(--seal);stroke-width:2.6;fill:none;stroke-linejoin:round}
+.chart .lb{stroke:var(--b4);stroke-width:2.6;fill:none;stroke-linejoin:round}
+.chart .fill{fill:var(--gilt);opacity:.18}
+.empty{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--soft);text-anchor:middle}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-top:10px}
+.legend i{display:inline-block;width:16px;height:3px;margin-right:7px;vertical-align:middle}
+.hist{display:flex;align-items:flex-end;gap:3px;height:66px;border-bottom:2px solid var(--ink)}
+.hist span{flex:1;background:var(--rule);min-height:2px;transform-origin:bottom;
+  animation:grow .6s cubic-bezier(.2,.9,.25,1) backwards}
+.hist span.you{background:var(--b5)}
+@keyframes grow{from{transform:scaleY(0)}}
+.axrow{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--soft);margin-top:5px}
+.bands{border:1px solid var(--rule)}
+.bands div{display:flex;align-items:center;gap:12px;padding:11px 12px;border-bottom:1px solid var(--rule)}
+.bands div:last-child{border-bottom:0}
+.bands i{width:30px;height:30px;flex:0 0 30px;border:1px solid var(--ink)}
+.bands b{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;flex:0 0 118px}
+.bands span{color:var(--soft);font-size:13px}
+@media(max-width:560px){.bands b{flex:0 0 92px;font-size:9.5px}.bands span{font-size:12px}}
+.map{width:100%;display:block;max-width:470px;margin:0 auto}
+.map .q{stroke:var(--rule);stroke-width:.8}
+.map .qb{stroke:var(--ink);stroke-width:1.4}
+.map .lbl{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.06em;fill:var(--soft);text-anchor:middle}
+.map .ax{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;fill:var(--soft)}
+.map .you{fill:var(--b5);stroke:var(--ink);stroke-width:1.6}
+.map .crowd{fill:none;stroke:var(--soft);stroke-width:1.4;stroke-dasharray:3 3}
+.method{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.method div{background:var(--stock);padding:16px 14px}
+.method .n{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--gilt)}
+.method h4{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;font-size:16px;margin:7px 0;text-transform:uppercase;letter-spacing:-.01em}
+.method p{margin:0;font-size:12.5px;color:var(--soft);line-height:1.45}
+.method .prod{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink);margin-top:10px}
+@media(max-width:560px){.method{grid-template-columns:1fr}}
+.formula{font-family:"IBM Plex Mono",monospace;font-size:12px;text-align:center;padding:14px;border:1px solid var(--ink);margin-top:14px}
+
+/* ===== BUTTONS ===== */
+.btn{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;padding:14px 22px;border:1px solid var(--ink);background:var(--ink);
+  color:var(--stock);cursor:pointer;position:relative;overflow:hidden;transition:color .2s}
+.btn:before{content:"";position:absolute;inset:0;background:var(--seal);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s cubic-bezier(.2,.9,.25,1)}
+.btn:hover:before{transform:scaleX(1)}
+.btn span{position:relative;z-index:1;display:inline-flex;align-items:center;gap:9px}
+.btn svg{width:1em;height:1em;fill:currentColor}
+.btn.ghost{background:transparent;color:var(--ink)}.btn.ghost:hover{color:var(--stock)}
+.btn.ghost:before{background:var(--ink)}
+.btn.big{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;font-size:19px;letter-spacing:.02em;
+  padding:20px 42px;text-transform:uppercase}
+.btn.sm{padding:9px 13px;font-size:10.5px}
+.btn:focus-visible,.opt:focus-visible{outline:2px solid var(--gilt);outline-offset:3px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+
+/* ===== QUIZ ===== */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:30px}
+.mini{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.mini.deg{color:var(--b5)}
+.qtext{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;font-size:clamp(22px,5.2vw,33px);
+  line-height:1.1;letter-spacing:-.025em;margin:22px 0 26px;min-height:2.2em}
+.opt{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;background:none;border:0;
+  border-top:1px solid var(--rule);padding:16px 4px;cursor:pointer;font:inherit;color:inherit;position:relative;
+  transition:padding-left .18s cubic-bezier(.2,.9,.25,1),background .18s}
+.opt:last-of-type{border-bottom:1px solid var(--rule)}
+.opt:hover{padding-left:12px;background:rgba(30,61,46,.06)}
+.opt b{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;color:var(--seal);
+  border:1px solid var(--rule);width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  flex:0 0 24px;margin-top:1px;transition:background .18s,color .18s,border-color .18s}
+.opt:hover b{background:var(--seal);color:var(--stock);border-color:var(--seal)}
+.opt s{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--ink);transform:scaleX(0);
+  transform-origin:left;transition:transform .3s cubic-bezier(.2,.9,.25,1)}
+.opt:hover s{transform:scaleX(1)}
+.opt em{font-style:normal;font-size:15.5px;line-height:1.4}
+.anim-in{animation:slideup .34s cubic-bezier(.2,.9,.25,1) backwards}
+@keyframes slideup{from{opacity:0;transform:translateY(10px)}}
+.prog{height:8px;border:1px solid var(--ink);margin-top:26px}
+.prog i{display:block;height:100%;background:var(--seal);width:0;transition:width .38s cubic-bezier(.2,.9,.25,1),background .3s}
+.prog i.deg{background:var(--b5)}
+.back{background:none;border:0;padding:0;font:inherit;cursor:pointer;color:var(--soft);
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.back:hover{color:var(--ink)}
+
+/* ===== METRICS / TIP ===== */
+.metric{margin:20px 0}
+.metric .top{display:flex;justify-content:space-between;align-items:baseline;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.metric .top em{font-style:normal;font-family:"Archivo Black",Impact,sans-serif;font-size:24px;letter-spacing:-.03em}
+.bar{height:16px;border:1px solid var(--ink);margin-top:7px;position:relative;
+  background:repeating-linear-gradient(90deg,rgba(16,19,22,.12) 0 1px,transparent 1px 11px)}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--seal);transition:width 1s cubic-bezier(.2,.9,.25,1)}
+.bar.b i{background:var(--b4)}.bar.c i{background:var(--b5)}.bar.d i{background:var(--gilt)}
+.note{font-size:13.5px;color:var(--soft);margin-top:7px}
+.verdict{border:2px solid var(--ink);padding:24px;margin-top:28px;background:rgba(156,123,51,.09)}
+.verdict h2{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;font-size:clamp(28px,7.4vw,48px);
+  margin:8px 0 10px;letter-spacing:-.035em;text-transform:uppercase;line-height:.95}
+.verdict p{margin:0;font-size:15px}
+.tip{border:2px solid var(--ink);padding:26px;margin-top:26px;background:rgba(156,123,51,.10)}
+.tiph{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;font-size:clamp(24px,5.6vw,34px);
+  letter-spacing:-.03em;text-transform:uppercase;margin:0 0 10px}
+.tipnote{font-size:16px;line-height:1.5;color:var(--ink);margin:0}
+.addr{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:clamp(13px,3.1vw,16px);
+  line-height:1.6;word-break:break-all;background:var(--stock);border:2px solid var(--ink);
+  padding:16px;margin-top:16px;letter-spacing:.01em}
+canvas.card{max-width:100%;border:1px solid var(--rule);margin-top:16px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="bg" id="bg"></div>
+<div class="offline hidden" id="offline"></div>
+<div class="paper">
+
+<!-- ==================== LANDING ==================== -->
+<section id="s-landing">
+ <div class="hero">
+  <div class="floaters" id="floaters"></div>
+  <div class="eyebrow" style="position:relative">Diamond Balls Index</div>
+  <h1>Do you have<br><span class="hl">diamond balls</span>?</h1>
+  <div class="rot">
+   <b>Everyone says they will sell the top</b>
+   <b>Almost nobody does</b>
+   <b>Twenty questions decide which one you are</b>
+  </div>
+  <div class="cta"><button class="btn big" id="start"><span>Grade me</span></button></div>
+  <div class="hint">20 questions &middot; 90 seconds &middot; one tap each</div>
+  <div class="livebar"><div class="track" id="live"></div></div>
+ </div>
+
+ <div class="pad">
+  <div class="dialbox"><canvas id="dial-g"></canvas>
+   <div class="ends"><span>Cycle bottom</span><span>Cycle top</span></div></div>
+  <div class="readout"><div class="num" id="g-val">--</div><div class="chip" id="g-bnd">AWAITING DATA</div></div>
+  <div class="eyebrow center" style="margin-top:16px">Live reading across every report filed</div>
+
+  <div class="stats">
+   <div><div class="k">Reports</div><div class="v" id="g-n">0</div></div>
+   <div><div class="k">Read</div><div class="v" id="g-r">--</div></div>
+   <div><div class="k">Balls</div><div class="v" id="g-b">--</div></div>
+   <div><div class="k">Degen</div><div class="v" id="g-d">--</div></div>
+   <div><div class="k">Gap</div><div class="v" id="g-gp">--</div></div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sechead"><h3>Read against positioning</h3><span class="mini" id="tl-range"></span></div>
+  <p class="sub" style="margin:0 0 12px">When the orange line runs above the green one, the crowd holds more risk than its own cycle read justifies, and that spread is the signal</p>
+  <div id="tl"></div>
+  <div class="legend"><span><i style="background:var(--seal)"></i>Read</span><span><i style="background:var(--b4)"></i>Balls</span><span><i style="background:var(--gilt);opacity:.5"></i>Spread</span></div>
+
+  <div class="rule"></div>
+  <div class="sechead"><h3>Distribution</h3><span class="mini">10-point buckets</span></div>
+  <div class="hist" id="hist-g"></div>
+  <div class="axrow"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+
+  <div class="rule"></div>
+  <div class="sechead"><h3>The five bands</h3></div>
+  <div class="bands">
+   <div><i style="background:var(--b1)"></i><b>0 to 19<br>Capitulation</b><span>Nobody is levered, your friends have left, and the timeline is all obituaries</span></div>
+   <div><i style="background:var(--b2)"></i><b>20 to 39<br>Accumulation</b><span>Quiet, and real things get built while nobody outside is watching</span></div>
+   <div><i style="background:var(--b3)"></i><b>40 to 59<br>Mid cycle</b><span>Trends work, drawdowns are survivable, and leverage is normal</span></div>
+   <div><i style="background:var(--b4)"></i><b>60 to 79<br>Euphoria</b><span>Everything launches green, and the old names are coming back online</span></div>
+   <div><i style="background:var(--b5)"></i><b>80 to 100<br>Blowoff</b><span>Record leverage, and strangers are asking you to manage their money</span></div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="sechead"><h3>The grading map</h3><span class="mini">Eight grades</span></div>
+  <div id="map-g"></div>
+
+  <div class="rule"></div>
+  <div class="sechead"><h3>Method</h3><span class="mini">20 questions</span></div>
+  <div class="method">
+   <div><div class="n">SECTION I</div><h4>Where your head is</h4><p>Seven questions about what this cycle feels like from where you are standing, who is asking you for tips, how your group chat sounds, and how it feels to open your portfolio</p><p class="prod">Produces the Read</p></div>
+   <div><div class="n">SECTION II</div><h4>What you hold</h4><p>Eight questions about your actual book, covering cash weight, leverage, stops, exit plan, and what happens to your life if all of it goes to zero</p><p class="prod">Produces Balls</p></div>
+   <div><div class="n">SECTION III</div><h4>None of my business</h4><p>Five questions about the worst things you have done with money</p><p class="prod">Produces Degen</p></div>
+  </div>
+  <div class="formula">DBI&#8320; = 0.70 &middot; Read &nbsp;+&nbsp; 0.20 &middot; Balls &nbsp;+&nbsp; 0.10 &middot; Degen<br>
+   <span style="color:var(--soft)">DBI = percentile of DBI&#8320; against all 4<sup>20</sup> possible answer patterns</span></div>
+  <p class="sub" style="margin:14px 0 0">Averaging twenty answers collapses the spread, and the raw composite has a standard deviation of only 10.4, which would put most possible responses between 40 and 60 and make the gauge useless<br>The headline is therefore a percentile, so 80 means your reading is later in the cycle than 80 percent of all possible answer patterns<br>Read, Balls, and Degen are reported raw</p>
+
+  <div class="rule dbl"></div>
+  <div class="center"><button class="btn big" id="start2"><span>Grade me</span></button>
+   <div class="hint">Nothing is stored about you, only your four scores</div>
+   <div style="margin-top:14px"><button class="btn ghost sm hidden" id="seelast"><span>My last report</span></button></div></div>
+ </div>
+</section>
+
+<!-- ==================== QUIZ ==================== -->
+<section id="s-quiz" class="hidden"><div class="pad">
+ <div class="qhead"><span class="mini" id="q-sec"></span><span class="mini" id="q-count"></span></div>
+ <div class="qtext" id="q-text"></div>
+ <div id="q-opts"></div>
+ <div class="prog"><i id="q-prog"></i></div>
+ <div style="margin-top:14px"><button class="back" id="q-back">Back</button></div>
+</div></section>
+
+<!-- ==================== RESULT ==================== -->
+<section id="s-result" class="hidden"><div class="pad">
+ <div class="qhead"><span class="mini" id="r-no"></span><span class="mini" id="r-date"></span></div>
+ <div class="rule dbl"></div>
+ <div class="dialbox" id="stage">
+  <button class="btn ghost sm skip hidden" id="skip"><span>Skip</span></button>
+  <canvas id="dial-r" class="veil"></canvas>
+  <canvas id="blast"></canvas>
+  <div class="ends veil" id="ends-r"><span>Cycle bottom</span><span>Cycle top</span></div>
+ </div>
+ <div class="readout veil" id="ro-r"><div class="num" id="r-val">0.0</div><div class="chip" id="r-bnd"></div></div>
+ <p class="note center" id="r-vs"></p>
+
+ <div class="rule"></div>
+ <div class="metric"><div class="top"><span>Read &middot; what you see</span><em id="v-read">0</em></div>
+  <div class="bar"><i id="b-read"></i></div><p class="note" id="n-read"></p></div>
+ <div class="metric"><div class="top"><span>Balls &middot; how you are positioned</span><em id="v-balls">0</em></div>
+  <div class="bar b"><i id="b-balls"></i></div><p class="note" id="n-balls"></p></div>
+ <div class="metric"><div class="top"><span>Degen &middot; the last five</span><em id="v-degen">0</em></div>
+  <div class="bar c"><i id="b-degen"></i></div><p class="note" id="n-degen"></p></div>
+ <div class="metric"><div class="top"><span>Conviction gap</span><em id="v-gap">0</em></div>
+  <div class="bar d"><i id="b-gap"></i></div><p class="note" id="n-gap"></p></div>
+
+ <div class="verdict"><div class="eyebrow">Grade assigned</div><h2 id="r-arch"></h2><p id="r-archnote"></p></div>
+
+ <div class="btnrow">
+  <button class="btn" id="copy-post"><span>Copy post</span></button>
+  <button class="btn ghost" id="dl-card"><span>Download card</span></button>
+  <button class="btn ghost" id="retake"><span>Retake</span></button>
+ </div>
+ <canvas id="card" class="card hidden" width="1200" height="675"></canvas>
+
+ <div class="tip">
+  <h3 class="tiph">Tip the creator</h3>
+  <p class="tipnote">No ads, no email capture, no token, no affiliate links<br>If this was worth 90 seconds, it is worth a coffee<br>SOL only</p>
+  <div class="addr" id="sol-addr"></div>
+  <div class="btnrow" style="margin-top:14px"><button class="btn" id="copy-addr"><span>Copy address</span></button></div>
+ </div>
+
+ <div class="rule"></div>
+ <div class="sechead"><h3>Where you landed</h3><span class="mini">You against the crowd</span></div>
+ <div id="map-r"></div>
+ <div class="rule"></div>
+ <div class="sechead"><h3>Distribution</h3><span class="mini">Your bucket in red</span></div>
+ <div class="hist" id="hist-r"></div>
+ <div class="axrow"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+ <div class="center" style="margin-top:26px"><button class="btn ghost sm" id="home"><span>Back to the index</span></button></div>
+ <div class="center mini" style="margin-top:20px">Filed by @oldhawk</div>
+</div></section>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const SOL_ADDRESS="Ad5DTL46CfbdcVzfPi3sVjUnddyZBj6MNu7sAf6ED4pi";
+const SITE=location.host&&location.host.indexOf("localhost")<0?location.host:"diamondballs.vercel.app", HANDLE="@oldhawk";
+const AGG_KEY="dbi:agg:v6", ME_KEY="dbi:me:v6";
+
+/* ================= QUESTIONS =================
+   Every question is personal. Nothing asks you to read a metric. */
+const HEAD=[
+["The last time someone outside crypto asked you what to buy",["It has never happened","Years ago","A few months back","This week"]],
+["How it feels to open your portfolio right now",["I stopped opening it","I wince, then close it","Quietly satisfying","I open it ten times a day and grin"]],
+["When you tell a stranger you trade crypto, they",["Look at you like you lost everything","Change the subject","Ask a couple of questions","Ask you to manage their money"]],
+["Your group chat right now sounds like",["A graveyard","The same five people talking about nothing","Old names coming back online","Screenshots, all day, every day"]],
+["People you know who have quit crypto in the last year",["Most of them","A few","None, and some came back","None, and new ones keep arriving"]],
+["The last thing you screenshotted",["My own liquidation","A chart I was studying","A green position I was proud of","A number I did not think was possible"]],
+["If you had to describe this moment to your future self",["We were at the bottom and nobody believed it","Early, boring, and the good part","The fun part, and I knew it","The top, and I did nothing about it"]]];
+const POSITION=[
+["Stables and cash as a share of your portfolio",["Over 60 percent","30 to 60 percent","10 to 30 percent","Under 10 percent"]],
+["Leverage you are carrying right now",["None, spot only","Under 2x","3x to 5x","Above 5x"]],
+["Your last three trades were",["Taking profit into stables","Rebalancing into majors","Majors into alts","Alts into whatever launched today"]],
+["Your biggest position drops 40 percent overnight",["I cut it, because the plan said so","I trim half and reassess","I hold, because the thesis has not changed","I add, because it is a discount"]],
+["Where your stop losses live",["On the exchange, always","On the exchange, sometimes moved","In my head","I do not use stops"]],
+["If crypto went to zero tomorrow, your life",["Barely changes","Gets uncomfortable for a year","Is materially worse","Is over, because the money is borrowed"]],
+["Your exit plan",["Levels written, ladder set, orders resting","Levels written, executed by hand","Rough numbers in my head","There is no plan"]],
+["The time between your idea and your position",["Days of research first","A few hours","Minutes","I buy first and read after"]]];
+const DEGEN=[
+["Tokens in your wallet you cannot name",["Zero, and I know every line","One or two dust bags","A full screen of them","I stopped opening that wallet"]],
+["The worst you have ever been down on a single position",["Never worse than 20 percent","Around 50 percent","Ninety plus, and I held","It went to zero and I bought the relaunch"]],
+["You spot a contract deployed four minutes ago, no site, no lock, anon dev, frog avatar",["Block it and move on","Watch it for an hour","Small size, in and out","Already in, already posting it"]],
+["Your worst crypto decision was made",["Sober, at a desk, with a spreadsheet","Late at night","Drunk","In under 30 seconds, on a toilet, for four figures"]],
+["The top is in, everyone else is calling for another 3x, and you",["Sell everything and log off","Sell into strength on a ladder","Sell half and gamble the rest","Buy the top with leverage, because diamond balls do not sell"]]];
+const V=[0,33,67,100];
+const QS=[].concat(HEAD.map(q=>({q:q[0],o:q[1],s:0})),POSITION.map(q=>({q:q[0],o:q[1],s:1})),DEGEN.map(q=>({q:q[0],o:q[1],s:2})));
+const SECNAME=["Section I \u00B7 Where your head is","Section II \u00B7 What you hold","Section III \u00B7 None of my business"];
+const BANDCOL=["#26467A","#3C6B6B","#8A8B62","#B96E33","#8E241E"];
+const band=s=>s<20?"CAPITULATION":s<40?"ACCUMULATION":s<60?"MID CYCLE":s<80?"EUPHORIA BUILDING":"BLOWOFF TOP";
+const bandCol=s=>BANDCOL[Math.max(0,Math.min(4,Math.floor(s/20)))];
+function archetype(read,balls,degen){
+ if(degen>=90)return["Certified Degenerate",[
+  "The last five questions overrode everything else",
+  "Whatever your cycle read says, your hands do the opposite",
+  "Not a strategy, a personality"]];
+ const hi=60,lo=40;
+ if(read<lo&&balls>hi)return["Diamond Balls",[
+  "You read this as early, and you are actually sized for it",
+  "The only square on the grid where your mouth and your bag agree on the way up",
+  "Now write the exit before you need it"]];
+ if(read<lo&&balls<lo)return["Paper Prophet",[
+  "You called the bottom and brought no size",
+  "Being right at 8 percent allocation pays about the same as being wrong"]];
+ if(read>hi&&balls>hi)return["Exit Liquidity",[
+  "You can see the top and you are still fully long into it",
+  "Everybody in this box believes they will be the one who gets out first"]];
+ if(read>hi&&balls<lo)return["Cold Blooded",[
+  "You read it late, and you positioned for late",
+  "The boring answer that survives cycles and gets zero engagement"]];
+ if(balls>hi)return["Full Send Agnostic",[
+  "No strong view on the cycle, maximum risk regardless",
+  "Your P and L is a coin flip wearing a thesis"]];
+ if(balls<lo)return["Fence Sitter",[
+  "No view and no size",
+  "Zero risk of ruin, and zero chance of a trade that changes your year"]];
+ return["Journeyman",[
+  "Middle of the read, middle of the risk",
+  "Nothing here blows you up, and nothing here changes anything"]];
+}
+function erf(z){const s=z<0?-1:1;z=Math.abs(z);const t=1/(1+.3275911*z);
+ return s*(1-(((((1.061405429*t-1.453152027)*t+1.421413741)*t-.284496736)*t+.254829592)*t)*Math.exp(-z*z))}
+const CDF=r=>.5*(1+erf((r-50)/15/Math.SQRT2)), C0=CDF(0), C1=CDF(100);
+const cal=r=>Math.max(0,Math.min(100,(CDF(r)-C0)/(C1-C0)*100));
+function score(ans){
+ const m=a=>a.reduce((x,y)=>x+y,0)/a.length;
+ const read=m(ans.slice(0,7)),balls=m(ans.slice(7,15)),degen=m(ans.slice(15,20));
+ const dbi=.7*read+.2*balls+.1*degen;
+ return{read,balls,degen,dbi,c:cal(dbi),gap:Math.abs(balls-(100-read))};
+}
+
+/* ================= SCROLLING BACKGROUND =================
+   Dates and events are public record. No words are put in anyone's mouth. */
+const TICKER=[
+ ["SATOSHI'S LAST KNOWN MESSAGE","APRIL 2011","MT GOX","FEBRUARY 2014","THE TOP IS OBVIOUS ONLY IN THE SCREENSHOT"],
+ ["EVERYONE IS A LONG TERM HOLDER UNTIL THEY ARE DOWN FORTY PERCENT","LUNA","MAY 2022","SEVEN DAYS"],
+ ["12 MARCH 2020","THREE ARROWS","JUNE 2022","NOBODY POSTS THEIR LIQUIDATIONS","CASH IS A POSITION"],
+ ["FTX","NOVEMBER 2022","YOUR THESIS IS WHATEVER YOU ALREADY BOUGHT","DECEMBER 2017","NOVEMBER 2021"],
+ ["THE MERGE","SEPTEMBER 2022","SPOT ETFS","JANUARY 2024","THE BOTTOM ARRIVES AFTER YOU STOP LOOKING"],
+ ["EXIT LIQUIDITY NEVER KNOWS IT IS EXIT LIQUIDITY","THE PLAN SURVIVES UNTIL THE FIRST RED CANDLE"],
+ ["CONVICTION IS EASY WHEN YOU ARE UP","SIZE IS THE ONLY OPINION THAT COSTS ANYTHING"],
+ ["EVERY CYCLE PRODUCES THE SAME SENTENCE","THIS TIME IS DIFFERENT","IT NEVER IS"]];
+(function bg(){
+ const rows=[[2,54,34,"L",.16],[15,88,53,"R",.10],[28,42,28,"L",.20],[42,100,62,"R",.09],
+  [56,48,31,"L",.18],[69,74,45,"R",.12],[82,40,26,"L",.21],[92,64,38,"R",.11]];
+ document.getElementById("bg").innerHTML=rows.map((r,i)=>{
+  const[top,size,dur,dir,op]=r,line=TICKER[i%TICKER.length];
+  const run=line.map(t=>`<i>${t}</i>`).join("")+`<i>&middot;</i>`;
+  return `<div class="mq${i%2?" solid":""}" style="top:${top}%;font-size:${size}px;
+   animation:mq${dir} ${dur}s linear infinite;-webkit-text-stroke-color:rgba(16,19,22,${op})">${run+run}</div>`}).join("")})();
+
+/* ====================== CANVAS GAUGE ====================== */
+const GW=460,GH=278,GCX=230,GCY=196,SWEEP=112;
+const ang=s=>-SWEEP+2*SWEEP*s/100;
+const pol=(a,r)=>[GCX+r*Math.sin(a*Math.PI/180),GCY-r*Math.cos(a*Math.PI/180)];
+const cang=a=>(a-90)*Math.PI/180;
+const REDUCED=matchMedia("(prefers-reduced-motion: reduce)").matches;
+class Gauge{
+ constructor(cv){this.cv=cv;this.x=cv.getContext("2d");this.v=0;this.ghost=null;this.trail=[];
+  this.fit();addEventListener("resize",()=>{this.fit();this.draw()})}
+ fit(){const w=this.cv.clientWidth||GW,d=Math.min(2,devicePixelRatio||1);
+  this.cv.width=Math.round(w*d);this.cv.height=Math.round(w*GH/GW*d);
+  const k=w/GW*d;this.x.setTransform(k,0,0,k,0,0)}
+ arc(r,s0,s1,col,w,cap){const x=this.x;x.beginPath();x.arc(GCX,GCY,r,cang(ang(s0)),cang(ang(s1)));
+  x.strokeStyle=col;x.lineWidth=w;if(cap)x.lineCap=cap;x.stroke();x.lineCap="butt"}
+ draw(){const x=this.x,v=this.v;x.clearRect(0,0,GW,GH);
+  for(let i=0;i<5;i++){const a=i*20+.7,b=i*20+19.3;
+   x.globalAlpha=.26;this.arc(126,a,b,BANDCOL[i],20);x.globalAlpha=1;
+   if(v>a)this.arc(126,a,Math.min(b,v),BANDCOL[i],20)}
+  this.arc(150,0,100,"rgba(16,19,22,.5)",1.4);
+  this.arc(103,0,100,"rgba(16,19,22,.22)",1);
+  this.arc(112,0,100,"rgba(16,19,22,.10)",5);
+  if(v>0.4)this.arc(112,0,v,"#101316",5,"round");
+  for(let s=0;s<=100;s+=2.5){const M=s%20===0,H=s%10===0,a=ang(s);
+   const[x0,y0]=pol(a,140),[x1,y1]=pol(a,M?150:H?147:144);
+   x.beginPath();x.moveTo(x0,y0);x.lineTo(x1,y1);
+   x.strokeStyle=s<=v?"#101316":"rgba(16,19,22,.22)";x.lineWidth=M?3:H?1.6:1;x.stroke()}
+  x.font="600 15px 'IBM Plex Mono',monospace";x.textAlign="center";x.textBaseline="middle";
+  for(let s=0;s<=100;s+=20){const[nx,ny]=pol(ang(s),168);
+   x.fillStyle=s<=v?"#101316":"#5A635F";x.fillText(s,nx,ny)}
+  x.textBaseline="alphabetic";x.textAlign="left";
+  if(this.ghost!==null){const a=ang(this.ghost),[g1,g2]=pol(a,104),[g3,g4]=pol(a,140);
+   x.setLineDash([4,4]);x.beginPath();x.moveTo(g1,g2);x.lineTo(g3,g4);
+   x.strokeStyle="#5A635F";x.lineWidth=2;x.stroke();x.setLineDash([])}
+  this.trail.forEach((t,i)=>{x.globalAlpha=.06*(i+1)/this.trail.length;this.needle(t)});
+  x.globalAlpha=1;
+  x.save();x.shadowColor="rgba(16,19,22,.35)";x.shadowBlur=10;x.shadowOffsetY=3;this.needle(v);x.restore();
+  x.beginPath();x.arc(GCX,GCY,17,0,7);x.fillStyle="#101316";x.fill();
+  x.beginPath();x.arc(GCX,GCY,9,0,7);x.fillStyle="#E7EAE6";x.fill();
+  x.beginPath();x.arc(GCX,GCY,3.4,0,7);x.fillStyle="#101316";x.fill()}
+ needle(v){const x=this.x,a=ang(v);
+  const[tx,ty]=pol(a,132),[l1,l2]=pol(a+90,9.5),[r1,r2]=pol(a-90,9.5),[b1,b2]=pol(a+180,34),
+   [l3,l4]=pol(a+150,13),[r3,r4]=pol(a-150,13);
+  x.beginPath();x.moveTo(tx,ty);x.lineTo(l1,l2);x.lineTo(l3,l4);x.lineTo(b1,b2);
+  x.lineTo(r3,r4);x.lineTo(r1,r2);x.closePath();x.fillStyle="#101316";x.fill()}
+ to(target,ms,onTick){target=Math.max(0,Math.min(100,target));
+  if(REDUCED){this.v=target;this.trail=[];this.draw();onTick&&onTick(target);return}
+  const t0=performance.now(),self=this;
+  (function f(n){const p=Math.min(1,(n-t0)/(ms||1600));
+   const e=p<=0?0:p>=1?1:1-Math.pow(2,-9*p)*Math.cos(p*11);
+   self.v=Math.max(0,Math.min(100,target*e));
+   self.trail.push(self.v);if(self.trail.length>7)self.trail.shift();
+   self.draw();onTick&&onTick(self.v);
+   if(p<1)requestAnimationFrame(f);else{self.trail=[];self.draw()}})(t0)}
+}
+
+/* ======================= CHARTS ======================= */
+function drawTimeline(host,days){
+ const W=700,H=210,L=34,Rr=10,T=12,B=26,iw=W-L-Rr,ih=H-T-B,gy=v=>T+ih*(1-v/100);
+ let g="";[0,25,50,75,100].forEach(v=>{g+=`<line class="grid" x1="${L}" y1="${gy(v).toFixed(1)}" x2="${W-Rr}" y2="${gy(v).toFixed(1)}"/>`+
+  `<text class="axis" x="${L-6}" y="${(gy(v)+3.5).toFixed(1)}" text-anchor="end">${v}</text>`});
+ const k=Object.keys(days).sort().slice(-14);
+ if(k.length<1){host.innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${H}">${g}<text class="empty" x="${W/2}" y="${H/2}">No reports filed yet, the series starts with yours</text></svg>`;return}
+ const gx=i=>k.length===1?L+iw/2:L+iw*i/(k.length-1);
+ const pr=k.map((d,i)=>[gx(i),gy(days[d].sR/days[d].n)]),pb=k.map((d,i)=>[gx(i),gy(days[d].sB/days[d].n)]);
+ const P=a=>a.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ");
+ let dots="";pr.forEach((p,i)=>{dots+=`<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3.4" fill="var(--seal)"/>`+
+  `<circle cx="${pb[i][0].toFixed(1)}" cy="${pb[i][1].toFixed(1)}" r="3.4" fill="var(--b4)"/>`});
+ const lab=d=>d.slice(5).replace("-","/");
+ host.innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${H}">${g}<polygon class="fill" points="${P(pr)} ${P(pb.slice().reverse())}"/>`+
+  `<polyline class="lr" points="${P(pr)}"/><polyline class="lb" points="${P(pb)}"/>${dots}`+
+  `<text class="axis" x="${L}" y="${H-8}">${lab(k[0])}</text>`+
+  `<text class="axis" x="${W-Rr}" y="${H-8}" text-anchor="end">${lab(k[k.length-1])}</text></svg>`;
+ const tr=document.getElementById("tl-range");if(tr)tr.textContent=k.length+" day"+(k.length===1?"":"s")+" of data"}
+function drawHist(host,hist,mine){const mx=Math.max(1,...hist);
+ host.innerHTML=hist.map((v,i)=>`<span class="${i===mine?"you":""}" style="height:${Math.max(3,v/mx*100)}%;animation-delay:${120+i*45}ms"></span>`).join("")}
+function drawMap(host,you,crowd){
+ const W=470,H=408,P=48,S=Math.min(W-P*2,H-P*2-18),X=P,Y=24,px=v=>X+S*v/100,py=v=>Y+S*(1-v/100);
+ const cells=[[20,80,"DIAMOND","BALLS"],[20,20,"PAPER","PROPHET"],[80,80,"EXIT","LIQUIDITY"],
+  [80,20,"COLD","BLOODED"],[50,82,"FULL SEND","AGNOSTIC"],[50,18,"FENCE","SITTER"],[50,50,"JOURNEY","MAN"]];
+ let c="";cells.forEach(([x,y,a,b])=>{c+=`<text class="lbl" x="${px(x)}" y="${py(y)-4}">${a}</text><text class="lbl" x="${px(x)}" y="${py(y)+7}">${b}</text>`});
+ let gl="";[40,60].forEach(v=>{gl+=`<line class="q" x1="${px(v)}" y1="${Y}" x2="${px(v)}" y2="${Y+S}"/><line class="q" x1="${X}" y1="${py(v)}" x2="${X+S}" y2="${py(v)}"/>`});
+ const cr=crowd?`<circle class="crowd" cx="${px(crowd[0]).toFixed(1)}" cy="${py(crowd[1]).toFixed(1)}" r="10"/>`:"";
+ const yo=you?`<circle class="you" cx="${px(you[0]).toFixed(1)}" cy="${py(you[1]).toFixed(1)}" r="7"/>`+
+  `<text class="lbl" style="fill:var(--b5)" x="${px(you[0]).toFixed(1)}" y="${(py(you[1])-14).toFixed(1)}">YOU</text>`:"";
+ host.innerHTML=`<svg class="map" viewBox="0 0 ${W} ${H}"><rect class="qb" x="${X}" y="${Y}" width="${S}" height="${S}" fill="none"/>${gl}${c}${cr}${yo}`+
+  `<text class="ax" x="${X}" y="${Y+S+22}">READ &#183; EARLY</text><text class="ax" x="${X+S}" y="${Y+S+22}" text-anchor="end">READ &#183; LATE</text>`+
+  `<text class="ax" transform="rotate(-90 14 ${Y+S})" x="14" y="${Y+S}">BALLS &#183; LOW</text>`+
+  `<text class="ax" transform="rotate(-90 14 ${Y+72})" x="14" y="${Y+72}">BALLS &#183; HIGH</text></svg>`}
+
+/* ==================== DIAMOND IMPACT ==================== */
+function gemPts(x,y,s,rot){return[[0,-1],[-.62,-.34],[-.95,.02],[0,1],[.95,.02],[.62,-.34]]
+ .map(([a,b])=>{const c=Math.cos(rot),d=Math.sin(rot);return[x+(a*c-b*d)*s,y+(a*d+b*c)*s]})}
+function impact(stage,cv,onScore){
+ const d=Math.min(2,devicePixelRatio||1),W=cv.clientWidth||460,H=W*GH/GW;
+ cv.width=Math.round(W*d);cv.height=Math.round(H*d);
+ const x=cv.getContext("2d");x.setTransform(d,0,0,d,0,0);
+ const CXp=W/2,CYp=H*.5,FALL=780,BURST=1000,END=2600,parts=[],
+  COL=["#101316","#9C7B33","#8E241E","#26467A","#1E3D2E","#B96E33"];
+ let fired=false,scored=false;const t0=performance.now();
+ (function f(n){const t=n-t0;x.clearRect(0,0,W,H);
+  if(t<FALL){const p=t/FALL,e=p*p,gap=(1-e)*W*.4,y=CYp-(1-e)*H*.7;
+   [-1,1].forEach(dir=>{const S=W*.055+e*W*.014,pts=gemPts(CXp+dir*gap,y,S,dir*p*5.2);
+    x.beginPath();pts.forEach((q,i)=>i?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1]));x.closePath();
+    const g=x.createLinearGradient(CXp+dir*gap-S,y-S,CXp+dir*gap+S,y+S);
+    g.addColorStop(0,"#F2F5F1");g.addColorStop(.5,"#9C7B33");g.addColorStop(1,"#5A635F");
+    x.fillStyle=g;x.fill();x.lineWidth=2;x.strokeStyle="#101316";x.stroke();
+    x.beginPath();x.moveTo(pts[1][0],pts[1][1]);x.lineTo(pts[5][0],pts[5][1]);
+    x.moveTo(pts[0][0],pts[0][1]);x.lineTo(pts[3][0],pts[3][1]);x.lineWidth=1.2;x.stroke()})}
+  if(t>=FALL&&!fired){fired=true;stage.classList.add("shake");
+   setTimeout(()=>stage.classList.remove("shake"),460);
+   for(let i=0;i<140;i++){const a=Math.random()*6.283,v=2.4+Math.random()*9.5;
+    parts.push({x:CXp,y:CYp,vx:Math.cos(a)*v,vy:Math.sin(a)*v-2.6,r:Math.random()*6.283,
+     vr:(Math.random()-.5)*.55,s:2+Math.random()*8,c:COL[i%COL.length],l:1})}}
+  if(t>=FALL){const k=(t-FALL)/(END-FALL);
+   if(k<.34){const rr=k*3*(W*.32);x.beginPath();x.arc(CXp,CYp,rr,0,6.284);
+    x.strokeStyle=`rgba(16,19,22,${(.5-k*1.4).toFixed(3)})`;x.lineWidth=Math.max(0,10-k*28);x.stroke()}
+   if(k<.1){x.fillStyle=`rgba(255,255,255,${(.88-k*8.8).toFixed(3)})`;x.fillRect(0,0,W,H)}
+   parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.32;p.vx*=.985;p.r+=p.vr;p.l-=.0122;
+    if(p.l<=0)return;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.globalAlpha=Math.max(0,p.l);
+    x.fillStyle=p.c;x.beginPath();x.moveTo(0,-p.s);x.lineTo(p.s*.7,0);x.lineTo(0,p.s);x.lineTo(-p.s*.7,0);
+    x.closePath();x.fill();x.restore()})}
+  if(t>=BURST&&!scored){scored=true;onScore()}
+  if(t<END)requestAnimationFrame(f);else{x.clearRect(0,0,W,H);cv.style.display="none"}})(t0)}
+
+/* ========================= STATE ========================= */
+let idx=0,answers=new Array(20).fill(null),agg=null,last=null;
+const $=id=>document.getElementById(id);
+const show=s=>{["s-landing","s-quiz","s-result"].forEach(x=>$(x).classList.toggle("hidden",x!==s));scrollTo(0,0)};
+const today=()=>new Date().toISOString().slice(0,10);
+const blank=()=>({n:0,sD:0,sC:0,sR:0,sB:0,sDe:0,sG:0,hist:new Array(10).fill(0),days:{}});
+let LIVE=false,WHY="";
+function setStatus(){const b=$("offline");
+ if(LIVE||OFFLINE_OK){b.classList.add("hidden");return}
+ b.classList.remove("hidden");
+ b.innerHTML="Reports are not being saved right now ("+WHY+
+  ")<br>Open <a href=\"/api/health\">/api/health</a> to see exactly what is wrong"}
+// true only inside a preview sandbox, where there is no server to talk to
+const OFFLINE_OK=(location.protocol==="blob:"||location.protocol==="about:"||
+ location.hostname===""||typeof window.storage==="object");
+async function loadAgg(){
+ try{const r=await fetch("/api/stats",{cache:"no-store"});
+  if(!r.ok){WHY="/api/stats returned "+r.status;throw 0}
+  const a=await r.json();
+  if(a.error){WHY=a.error;throw 0}
+  LIVE=true;WHY="";agg=Object.assign(blank(),a);
+  agg.hist=(a.hist||[]).concat(new Array(10).fill(0)).slice(0,10);agg.days=a.days||{};
+  if(!agg.n)agg=null;
+  setStatus();return}catch(e){if(!WHY)WHY="could not reach /api/stats"}
+ LIVE=false;setStatus();
+ try{const a=JSON.parse((await window.storage.get(AGG_KEY,true)).value);
+  agg=Object.assign(blank(),a);agg.hist=(a.hist||[]).concat(new Array(10).fill(0)).slice(0,10);agg.days=a.days||{}}
+ catch(e){agg=null}}
+async function pushResult(d,c,r,b,de,gp){
+ const a=agg||blank();a.n++;a.sD+=d;a.sC+=c;a.sR+=r;a.sB+=b;a.sDe+=de;a.sG+=gp;
+ a.hist[Math.max(0,Math.min(9,Math.floor(c/10)))]++;
+ const k=today();a.days[k]=a.days[k]||{n:0,sD:0,sC:0,sR:0,sB:0};
+ const dd=a.days[k];dd.n++;dd.sD+=d;dd.sC+=c;dd.sR+=r;dd.sB+=b;
+ const ks=Object.keys(a.days).sort();while(ks.length>60)delete a.days[ks.shift()];
+ try{await window.storage.set(AGG_KEY,JSON.stringify(a),true)}catch(e){}
+ agg=a;return a}
+const avgD=()=>agg&&agg.n?agg.sC/agg.n:null;
+
+/* ======================== SCREENS ======================== */
+const gG=new Gauge($("dial-g")),gR=new Gauge($("dial-r"));
+gG.draw();gR.draw();
+(function(){const vals=["12.4","88.1","31.7","64.9","5.2","97.0","46.3","71.8","23.6","55.1"];
+ $("floaters").innerHTML=vals.map(v=>{
+  const sz=Math.round(26+Math.random()*50),tp=Math.round(Math.random()*78),lf=Math.round(Math.random()*84),
+   du=(7+Math.random()*8).toFixed(1),dl=(-Math.random()*8).toFixed(1);
+  return `<b style="font-size:${sz}px;top:${tp}%;left:${lf}%;animation-duration:${du}s;animation-delay:${dl}s">${v}</b>`}).join("")})();
+
+function paintLive(){
+ const a=avgD(),parts=a===null
+  ? ["Awaiting the first report","One report per account","Nothing is posted on your behalf","No ads, no token"]
+  : [`Current reading ${a.toFixed(1)}`,band(a),`${agg.n.toLocaleString()} reports filed`,
+     `Crowd read ${(agg.sR/agg.n).toFixed(0)}`,`Crowd balls ${(agg.sB/agg.n).toFixed(0)}`,
+     `Conviction gap ${(agg.sG/agg.n).toFixed(0)}`];
+ const run=parts.map(t=>`<i>${t}</i>`).join("")+"<i>&middot;</i>";
+ $("live").innerHTML=run+run}
+
+async function paintLanding(){
+ await loadAgg();
+ drawTimeline($("tl"),agg?agg.days:{});
+ drawHist($("hist-g"),agg?agg.hist:new Array(10).fill(0),-1);
+ paintLive();
+ const a=avgD();
+ if(a===null){drawMap($("map-g"),null,null);return}
+ $("g-n").textContent=agg.n.toLocaleString();
+ $("g-r").textContent=(agg.sR/agg.n).toFixed(0);
+ $("g-b").textContent=(agg.sB/agg.n).toFixed(0);
+ $("g-d").textContent=(agg.sDe/agg.n).toFixed(0);
+ $("g-gp").textContent=(agg.sG/agg.n).toFixed(0);
+ drawMap($("map-g"),null,[agg.sR/agg.n,agg.sB/agg.n]);
+ setTimeout(()=>{gG.fit();gG.to(a,1700,v=>{$("g-val").textContent=v.toFixed(1);
+  $("g-bnd").textContent=band(v);$("g-bnd").style.background=bandCol(v)})},320)}
+
+function renderQ(){const q=QS[idx];
+ $("q-sec").textContent=SECNAME[q.s];$("q-sec").classList.toggle("deg",q.s===2);
+ $("q-count").textContent=String(idx+1).padStart(2,"0")+" / 20";
+ const t=$("q-text");t.textContent=q.q;t.classList.remove("anim-in");void t.offsetWidth;t.classList.add("anim-in");
+ $("q-opts").innerHTML=q.o.map((o,i)=>`<button class="opt anim-in" style="animation-delay:${60+i*55}ms" data-i="${i}"><b>${"ABCD"[i]}</b><em>${o}</em><s></s></button>`).join("");
+ $("q-opts").querySelectorAll(".opt").forEach(b=>b.onclick=()=>pick(+b.dataset.i));
+ $("q-prog").style.width=(idx/20*100)+"%";$("q-prog").classList.toggle("deg",q.s===2);
+ $("q-back").style.visibility=idx?"visible":"hidden"}
+function pick(i){answers[idx]=V[i];idx<19?(idx++,renderQ()):finish()}
+onkeydown=e=>{if($("s-quiz").classList.contains("hidden"))return;
+ const k="1234".indexOf(e.key);if(k>-1)pick(k);
+ if(e.key==="Backspace"&&idx){idx--;renderQ()}};
+$("q-back").onclick=()=>{if(idx){idx--;renderQ()}};
+
+const begin=()=>{idx=0;answers.fill(null);show("s-quiz");renderQ()};
+$("start").onclick=begin;$("start2").onclick=begin;$("retake").onclick=begin;
+$("home").onclick=()=>{show("s-landing");paintLanding()};
+
+async function finish(){
+ show("s-result");$("r-val").textContent="0.0";
+ if(LIVE){
+  try{
+   const r=await fetch("/api/report",{method:"POST",
+    headers:{"Content-Type":"application/json"},body:JSON.stringify({answers})});
+   const j=await r.json();
+   if(!r.ok)throw new Error(j.error||"Could not file the report");
+   await loadAgg();
+   last=Object.assign(j.you,{no:j.no});
+   try{await window.storage.set(ME_KEY,JSON.stringify(last),false)}catch(e){}
+   paintResult(last,true);return;
+  }catch(e){
+   const s=score(answers);last=Object.assign(s,{no:0});
+   paintResult(last,true);
+   $("r-vs").textContent=e.message+", so your score is shown but was not added to the index";
+   return}}
+ const s=score(answers);
+ const a=await pushResult(s.dbi,s.c,s.read,s.balls,s.degen,s.gap);
+ last=Object.assign(s,{no:a.n});
+ try{await window.storage.set(ME_KEY,JSON.stringify(last),false)}catch(e){}
+ paintResult(last,true)}
+
+function paintResult(r,animate){
+ $("r-no").textContent=r.no?"Report No. DBI-"+String(r.no).padStart(6,"0"):"Unfiled report";
+ $("r-date").textContent=new Date().toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}).toUpperCase();
+ const a=avgD(),C=r.c!==undefined?r.c:cal(r.dbi);
+ gR.ghost=a;gR.v=0;gR.draw();
+ $("r-val").textContent="0.0";$("r-bnd").textContent="";
+ $("r-vs").textContent=a===null?"":
+  C>a?"You read this cycle later than the crowd by "+(C-a).toFixed(1)+" points, and the dashed hairline is the crowd":
+  C<a?"You read this cycle earlier than the crowd by "+(a-C).toFixed(1)+" points, and the dashed hairline is the crowd":
+  "You are sitting exactly on the crowd average";
+ drawHist($("hist-r"),agg?agg.hist:new Array(10).fill(0),Math.max(0,Math.min(9,Math.floor(C/10))));
+ drawMap($("map-r"),[r.read,r.balls],a!==null?[agg.sR/agg.n,agg.sB/agg.n]:null);
+ const set=(v,b,val,d)=>{$(v).textContent=val.toFixed(0);setTimeout(()=>$(b).style.width=val+"%",d)};
+ const base=animate&&!REDUCED?1250:120;
+ set("v-read","b-read",r.read,base);set("v-balls","b-balls",r.balls,base+90);
+ set("v-degen","b-degen",r.degen,base+180);set("v-gap","b-gap",r.gap,base+270);
+ $("n-read").textContent=r.read<40?"Everything you see points to early cycle":r.read>60?"Everything you see points to late cycle":"What you see points to the middle innings";
+ $("n-balls").textContent=r.balls<40?"You are positioned defensively":r.balls>60?"You are positioned for maximum upside and maximum ruin":"You are positioned moderately";
+ $("n-degen").textContent=r.degen<40?"Boringly disciplined, and that is a compliment":r.degen>75?"You are the reason exchanges are profitable":"Normal levels of poor judgment";
+ $("n-gap").textContent=r.gap<25?"Your bag agrees with your mouth, which is the entire point of this test":r.gap<50?"There is some daylight between what you say and what you hold":"Your positioning contradicts your own cycle read, so one of the two is a lie";
+ const[nm,nt]=archetype(r.read,r.balls,r.degen);$("r-arch").textContent=nm;$("r-archnote").innerHTML=nt.join("<br>");
+ $("sol-addr").textContent=SOL_ADDRESS;
+ const cv=$("dial-r"),ro=$("ro-r"),bl=$("blast"),sk=$("skip");
+ const reveal=()=>{cv.classList.add("on");ro.classList.add("on");$("ends-r").classList.add("on");gR.fit();
+  gR.to(C,1700,v=>{$("r-val").textContent=v.toFixed(1);$("r-bnd").textContent=band(v);
+   $("r-bnd").style.background=bandCol(v)})};
+ if(animate&&!REDUCED){
+  cv.classList.remove("on");ro.classList.remove("on");$("ends-r").classList.remove("on");
+  bl.style.display="";sk.classList.remove("hidden");
+  sk.onclick=()=>{bl.style.display="none";sk.classList.add("hidden");reveal()};
+  requestAnimationFrame(()=>impact($("stage"),bl,()=>{reveal();setTimeout(()=>sk.classList.add("hidden"),900)}))
+ }else{bl.style.display="none";sk.classList.add("hidden");reveal()}}
+
+/* ========================= SHARE ========================= */
+const flash=(b,t)=>{const s=b.querySelector("span"),o=s.textContent;s.textContent=t;setTimeout(()=>s.textContent=o,1400)};
+$("copy-post").onclick=e=>{const[nm]=archetype(last.read,last.balls,last.degen),C=last.c!==undefined?last.c:cal(last.dbi);
+ navigator.clipboard.writeText(
+`Diamond Balls Index: ${C.toFixed(1)} / 100
+${band(C)}
+
+Read ${last.read.toFixed(0)} \u00B7 Balls ${last.balls.toFixed(0)} \u00B7 Degen ${last.degen.toFixed(0)}
+Conviction gap ${last.gap.toFixed(0)}
+
+Grade: ${nm}
+
+20 questions, 90 seconds
+Post yours
+${SITE}`).then(()=>flash(e.currentTarget,"Copied"))};
+$("copy-addr").onclick=e=>navigator.clipboard.writeText(SOL_ADDRESS).then(()=>flash(e.currentTarget,"Copied"));
+
+$("dl-card").onclick=async()=>{
+ try{await document.fonts.ready}catch(e){}
+ const c=$("card"),x=c.getContext("2d"),W=1200,H=675,[nm]=archetype(last.read,last.balls,last.degen);
+ const CC=last.c!==undefined?last.c:cal(last.dbi);
+ const cx=320,cy=390,r=180,ca=s=>((-112+2.24*s)-90)*Math.PI/180;
+ x.fillStyle="#E7EAE6";x.fillRect(0,0,W,H);
+ x.strokeStyle="#101316";x.lineWidth=2;x.strokeRect(20,20,W-40,H-40);
+ x.strokeStyle="#A9B2AC";x.lineWidth=1;x.strokeRect(32,32,W-64,H-64);
+ x.fillStyle="#5A635F";x.font="500 15px 'IBM Plex Mono',monospace";
+ x.fillText("REPORT No. DBI-"+String(last.no).padStart(6,"0"),62,82);
+ x.textAlign="right";x.fillText(HANDLE.toUpperCase(),W-62,82);x.textAlign="left";
+ for(let i=0;i<5;i++){const a=i*20+.7,b=i*20+19.3;x.lineWidth=24;x.strokeStyle=BANDCOL[i];
+  x.globalAlpha=.26;x.beginPath();x.arc(cx,cy,r-42,ca(a),ca(b));x.stroke();x.globalAlpha=1;
+  if(CC>a){x.beginPath();x.arc(cx,cy,r-42,ca(a),ca(Math.min(b,CC)));x.stroke()}}
+ x.lineWidth=7;x.strokeStyle="rgba(16,19,22,.10)";x.beginPath();x.arc(cx,cy,r-62,ca(0),ca(100));x.stroke();
+ if(CC>0.4){x.strokeStyle="#101316";x.lineCap="round";x.beginPath();x.arc(cx,cy,r-62,ca(0),ca(CC));x.stroke();x.lineCap="butt"}
+ x.textAlign="center";x.textBaseline="middle";
+ for(let s=0;s<=100;s+=5){const M=s%20===0,a=ca(s);x.lineWidth=M?3.4:1.3;
+  x.strokeStyle=s<=CC?"#101316":"rgba(16,19,22,.22)";x.beginPath();
+  x.moveTo(cx+Math.cos(a)*(r-18),cy+Math.sin(a)*(r-18));
+  x.lineTo(cx+Math.cos(a)*(r-(M?6:11)),cy+Math.sin(a)*(r-(M?6:11)));x.stroke();
+  if(M){x.fillStyle=s<=CC?"#101316":"#5A635F";x.font="600 16px 'IBM Plex Mono',monospace";
+   x.fillText(s,cx+Math.cos(a)*(r+20),cy+Math.sin(a)*(r+20))}}
+ x.textBaseline="alphabetic";x.textAlign="left";
+ const na=ca(CC);x.fillStyle="#101316";x.beginPath();
+ x.moveTo(cx+Math.cos(na)*(r-52),cy+Math.sin(na)*(r-52));
+ x.lineTo(cx+Math.cos(na+1.5708)*11,cy+Math.sin(na+1.5708)*11);
+ x.lineTo(cx+Math.cos(na+Math.PI)*40,cy+Math.sin(na+Math.PI)*40);
+ x.lineTo(cx+Math.cos(na-1.5708)*11,cy+Math.sin(na-1.5708)*11);x.closePath();x.fill();
+ x.beginPath();x.arc(cx,cy,19,0,7);x.fill();
+ x.beginPath();x.arc(cx,cy,10,0,7);x.fillStyle="#E7EAE6";x.fill();
+ const px=650;
+ x.fillStyle="#101316";x.font="44px 'Archivo Black',Impact,sans-serif";
+ x.fillText("DIAMOND BALLS",px,180);x.fillText("INDEX",px,226);
+ x.fillStyle="#A9B2AC";x.fillRect(px,250,W-px-62,1);
+ x.fillStyle="#101316";x.font="122px 'Archivo Black',Impact,sans-serif";x.fillText(CC.toFixed(1),px,366);
+ x.fillStyle=bandCol(CC);x.fillRect(px,388,330,34);
+ x.fillStyle="#E7EAE6";x.font="600 14px 'IBM Plex Mono',monospace";x.fillText(band(CC),px+13,410);
+ x.fillStyle="#5A635F";x.font="500 12px 'IBM Plex Mono',monospace";x.fillText("GRADE ASSIGNED",px,456);
+ x.fillStyle="#101316";x.font="32px 'Archivo Black',Impact,sans-serif";x.fillText(nm.toUpperCase(),px,490);
+ [["READ",last.read],["BALLS",last.balls],["DEGEN",last.degen],["GAP",last.gap]].forEach(([k,v],i)=>{
+  const y=536+i*29;x.fillStyle="#5A635F";x.font="500 12px 'IBM Plex Mono',monospace";x.fillText(k,px,y);
+  x.fillStyle="#A9B2AC";x.fillRect(px+62,y-9,220,10);
+  x.fillStyle=["#1E3D2E","#B96E33","#8E241E","#9C7B33"][i];x.fillRect(px+62,y-9,220*v/100,10);
+  x.fillStyle="#101316";x.font="600 14px 'IBM Plex Mono',monospace";x.fillText(v.toFixed(0),px+294,y)});
+ x.fillStyle="#5A635F";x.font="400 15px 'IBM Plex Mono',monospace";x.fillText(SITE,62,622);
+ c.toBlob(b=>{const u=URL.createObjectURL(b),a=document.createElement("a");
+  a.href=u;a.download="diamond-balls-index.png";a.click();URL.revokeObjectURL(u)})};
+
+/* ========================== BOOT ========================== */
+(async()=>{await paintLanding();
+ try{last=JSON.parse((await window.storage.get(ME_KEY,false)).value);
+  $("seelast").classList.remove("hidden");
+  $("seelast").onclick=()=>{paintResult(last,false);show("s-result")}}catch(e){}})();
+</script>
