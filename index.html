@@ -582,19 +582,19 @@ function setStatus(){const b=$("offline");
  if(LIVE||OFFLINE_OK){b.classList.add("hidden");return}
  b.classList.remove("hidden");
  b.innerHTML="Reports are not being saved right now ("+WHY+
-  ")<br>Open <a href=\"/api/health\">/api/health</a> to see exactly what is wrong"}
+  ")<br>Open <a href=\"/api/dbi?health=1\">/api/dbi?health=1</a> to see exactly what is wrong"}
 // true only inside a preview sandbox, where there is no server to talk to
 const OFFLINE_OK=(location.protocol==="blob:"||location.protocol==="about:"||
  location.hostname===""||typeof window.storage==="object");
 async function loadAgg(){
- try{const r=await fetch("/api/stats",{cache:"no-store"});
-  if(!r.ok){WHY="/api/stats returned "+r.status;throw 0}
+ try{const r=await fetch("/api/dbi",{cache:"no-store"});
+  if(!r.ok){WHY="/api/dbi returned "+r.status;throw 0}
   const a=await r.json();
   if(a.error){WHY=a.error;throw 0}
   LIVE=true;WHY="";agg=Object.assign(blank(),a);
   agg.hist=(a.hist||[]).concat(new Array(10).fill(0)).slice(0,10);agg.days=a.days||{};
   if(!agg.n)agg=null;
-  setStatus();return}catch(e){if(!WHY)WHY="could not reach /api/stats"}
+  setStatus();return}catch(e){if(!WHY)WHY="could not reach /api/dbi"}
  LIVE=false;setStatus();
  try{const a=JSON.parse((await window.storage.get(AGG_KEY,true)).value);
   agg=Object.assign(blank(),a);agg.hist=(a.hist||[]).concat(new Array(10).fill(0)).slice(0,10);agg.days=a.days||{}}
@@ -665,7 +665,7 @@ async function finish(){
  show("s-result");$("r-val").textContent="0.0";
  if(LIVE){
   try{
-   const r=await fetch("/api/report",{method:"POST",
+   const r=await fetch("/api/dbi",{method:"POST",
     headers:{"Content-Type":"application/json"},body:JSON.stringify({answers})});
    const j=await r.json();
    if(!r.ok)throw new Error(j.error||"Could not file the report");
